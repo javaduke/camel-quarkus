@@ -28,7 +28,7 @@ class CxfSoapServiceTest {
 
     @Test
     public void testSimpleSoapService() {
-        RestAssured.baseURI = "http://localhost:9090";
+        //        RestAssured.baseURI = "http://localhost:9090";
         final String response = RestAssured.given()
                 .contentType(ContentType.XML)
                 .body("<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ser=\"http://www.helloworld.com/Service/\">\n"
@@ -38,7 +38,7 @@ class CxfSoapServiceTest {
                         "      <ser:HelloRequest>HelloWorld</ser:HelloRequest>\n" +
                         "   </soapenv:Body>\n" +
                         "</soapenv:Envelope>")
-                .post("/hello")
+                .post("/soap/hello")
                 .then()
                 .statusCode(200)
                 .assertThat()
